@@ -1,0 +1,52 @@
+.admin{
+  background-color: #2b608b;
+  height: auto;
+  width: auto;
+}
+
+
+.buttondiv{
+
+  background-color: #201539;
+}
+
+.displaydiv{
+background-color: #2b608b;
+
+}
+
+.btn{
+  width: 150px;
+  height: 100px;
+  padding: 20px;
+  margin: 20px;
+}
+
+#adminprofile{
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+#aproveAdsPanel{
+  display: none;
+  width: auto;
+  height: auto;
+}
+
+#aprovedAds{
+  display: none;
+  width: auto;
+  height: auto;
+}
+#adminDeleteAds{
+  display: none;
+  width: auto;
+  height: auto;
+}
+
+#adminAds{
+  display: none;
+  width: auto;
+  height: auto;
+}

@@ -1,0 +1,28 @@
+<div class="xyz col-lg-12">
+  <div class="container">
+    <div class="row">
+      <!--<div class="card-columns">-->
+      <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads">
+        <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
+        <div class="card-body">
+          <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+          <p class="card-text">{{ad.payload.doc.data().description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+          <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+          <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+          <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
+        </ul>
+        <div class="card-body">
+          <button  class="btn btn-danger" (click)="deleteAd(ad.payload.doc.id)">delect ad</button>
+          <!--<a href="#" class="card-link">Another link</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+

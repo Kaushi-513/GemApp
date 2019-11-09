@@ -1,0 +1,33 @@
+.homeshow {
+  height: auto;
+  /*background-color: #2b608b;*/
+
+}
+#carousel {
+  padding: 600px;
+}
+.carousel-inner{
+
+  height: 400px;
+}
+
+.second{
+  height: 500px;
+  background-color: darkcyan;
+  background-image: url("../../assets/img/photo-1518953789413-9598f0909795.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: solid firebrick 10px;
+}
+
+.third{
+background-color: coral;
+  height: 400px;
+  background-image: url("../../assets/img/zolotye-ukrasheniia-braslety-dragotsennye-kamni-chernyi-fon.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+
+}

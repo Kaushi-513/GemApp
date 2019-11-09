@@ -1,0 +1,69 @@
+<body class="front_body">
+    <div class="topright">
+        <img class="img1" height="150" width ="150"  src="assets/images/logo.jpg" alt="User Icon" />
+    </div>
+<div id="Containerlogin" >
+<!--*ngIf="!currentUser"-->
+  <form  name="formlogin" id="login" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate class="">
+
+      <span onclick="document.getElementById('Containerlogin').style.display='none'" class="close" title="Close Modal">&times;
+      </span>
+
+    <div class="login-page">
+        <div class="form">
+        <h2>Log In</h2>
+        <div class="picback">
+            <img height="90" width ="90" src="assets/img/logIn.png" id="icon" alt="User Icon" />
+          </div>
+      
+    <div class="field1">
+      <input     type="text"
+                 name="email"
+                 id="Email"
+                 [(ngModel)]="form.email"
+                 #email="ngModel"
+                 required email
+                 matInput placeholder="Enter your E-Mail"/>
+      <div *ngIf="f.submitted && email.invalid">
+        <div *ngIf="email.errors.required">Email is required</div>
+        <div *ngIf="email.errors.email">Email must be a valid email address</div>
+      </div>
+      <!--</mat-form-field >-->
+    </div>
+
+
+
+    <div class="field2">
+      <!--<mat-form-field class="example-full-width">-->
+
+
+      <!--<label for="password"></label>-->
+      <input type="password"
+             name="password"
+             id="Pass"
+             [(ngModel)]="form.password"
+             #password="ngModel"
+             required minlength="6"  matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"/>
+      <div *ngIf="f.submitted && password.invalid">
+        <div *ngIf="password.errors.required">Password is required</div>
+        <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+      <!--<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+      <!--</mat-form-field>-->
+    </div>
+    <!---->
+    <div class="btnlogin">
+      <button class="form_bt submit_bt">Login</button>
+
+      <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+        Login failed: {{error}}
+      </div>
+    </div>
+    <a [routerLink]="['/signup']"> Sign Up</a>
+    
+  </div>
+</div>
+  </form>
+</div>
+</body>
+

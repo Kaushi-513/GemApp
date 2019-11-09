@@ -1,0 +1,50 @@
+
+
+<div class="message" *ngIf="sendsucces && isAleart">
+  YOUR ADS SENT SUCCESS FULLY <br>
+  PENDING FOR APROVEL
+  <button class="btn-primary" (click)="closeAleart()">close</button>
+
+</div>
+<div class="out">
+  <div class="main">
+    <h3 class="align"><b>Add post</b></h3>
+
+
+    <div class="container" style="width:40%; background-color: rgba(167, 159, 119, 0.61);opacity:0.6; border: thistle solid 5px">
+      <div class="picMargin">
+        <div style="position: relative; left: 0; top: 0;">
+
+          <img src="assets/img/download.jpg" width="200px" height="200px" class="img1 my-5" />
+          <label><img src="assets/img/cam2.png" width="50px" height="50px" class="img2" />
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+
+          </label>
+        </div>
+      </div>
+
+      <form (ngSubmit)="f.form.valid &&onsubmit()"#f="ngForm" novalidate >
+        
+        <div class="form-group">
+          <label ><h5>1) Condition</h5></label>
+          <div><input type="radio"   value="used" name="condition" [(ngModel)]="postDetails.condition" class="mx-5">Used
+            <input type="radio"    value="New" name="condition" [(ngModel)]="postDetails.condition" class="mx-5">New</div>
+        </div>
+        <div class="form-group">
+          <label ><h5>2) Title</h5></label>
+          <input type="text" class="form-control"  placeholder="Title" name="title" [(ngModel)]="postDetails.title">
+        </div>
+        <div class="form-group">
+          <label ><h5>3) Description</h5></label>
+          <input type="textarea" class="form-control"  placeholder="Add a description here" name="description" [(ngModel)]="postDetails.description">
+        </div>
+        <div class="form-group">
+          <label ><h5>4) Price</h5></label>
+          <input type="text" class="form-control"  placeholder="Rs.18000" name="price" [(ngModel)]="postDetails.price">
+        </div>
+
+        <button type="submit" class="btn btn-primary my-5">Post the ad</button>
+      </form>
+    </div>
+  </div>
+</div>

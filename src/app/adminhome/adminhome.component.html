@@ -1,0 +1,51 @@
+
+<div class="admin">
+<div class="row">
+
+  <div class="col-lg-2 buttondiv">
+
+
+    <!--this for to aprove user ads-->
+    <button class="btn btn-primary " onclick="DisplayUserAds()">go to aprove  the ads</button>
+    <!--this for view aproved article-->
+    <button class="btn btn-primary" onclick="DisplayAprovedAds() ">goto aproved ads</button>
+    <!--this for insert aproved ads by admin -->
+    <button class="btn btn-primary" onclick="DisplayForAdminAds()">go to insert ads</button>
+    <!--this for delete Ads from aproveads-->
+    <button class="btn btn-primary" onclick="DeleteAdsFromAll()">go to delete aproved ads</button>
+    <!--this for view profile-->
+    <button class="btn btn-primary" onclick="DisplayProfile()">go to Admin Profile</button>
+  </div>
+
+  <div class="col-lg-10 displaydiv" onclick="">
+    <div class="adprofileview" id="adminprofile">
+    <app-profile></app-profile>
+  </div>
+    <div class="useruploadAds" id="aproveAdsPanel">
+<app-aprove-ads></app-aprove-ads>
+      <!--TODO-->
+      <!--create component for-->
+      <!--that function in this component ts file-->
+      <!---->
+
+    </div>
+    <div class="aprovedAds" id="aprovedAds">
+    <app-viewads></app-viewads></div>
+    <div class="adminAds" id="adminAds">
+      <app-uploadads></app-uploadads>
+    </div>
+    <div class="adminDeleteAds" id="adminDeleteAds">
+      <app-delete-ads></app-delete-ads>
+    </div>
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+

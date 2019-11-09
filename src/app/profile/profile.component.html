@@ -1,0 +1,86 @@
+
+<h3>Name : {{email}}</h3>
+<h3>Your ID : {{uid}}</h3>
+<div class="spa2"></div>
+<div class="container">
+
+  
+    <div class="row userpanel">
+    <div class="col-lg-4 adview" >
+        <button class="btn btn-dark"  *ngIf="!click" (click)="openPro()">Edit Profile</button>
+       </div>
+
+    <div><button class="btn-dark" *ngIf="click" (click)="closePro()">close profile</button> </div>
+  </div>
+    <div class="profile" id="update"  *ngIf="click" >
+      
+
+
+      <form (ngSubmit)="f.form.valid &&updateProfile()"#f="ngForm" novalidate >
+
+        <div class="form-group">
+          <label ><h5>Gender</h5></label>
+          <div><input type="radio"   value="male" name="condition" [(ngModel)]="updateDetails.gender" class="mx-5">male
+            <input type="radio"    value="female" name="condition" [(ngModel)]="updateDetails.gender" class="mx-5">female</div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label ><h5>firstname</h5></label>
+          <input type="text" class="form-control"  placeholder="firstname" name="title" [(ngModel)]="updateDetails.firstname">
+        </div>
+
+        <div class="form-group">
+          <label ><h5>lastname</h5></label>
+          <input type="text" class="form-control"  placeholder="lastname" name="title" [(ngModel)]="updateDetails.lastname">
+        </div>
+        <div class="form-group">
+          <label ><h5>DateOfBirday</h5></label>
+          <input type="date" class="form-control"  placeholder="Title" name="title" [(ngModel)]="updateDetails.dob">
+        </div>
+        <div class="form-group">
+          <label ><h5>Change Contact email</h5></label>
+          <input type="email" class="form-control"  placeholder={{email}}   name="email"  [(ngModel)]="updateDetails.email">
+        </div>
+
+        <button type="submit" class="btn btn-primary my-5">Update</button>
+      </form>
+
+
+
+
+
+
+
+    </div>
+  
+
+  <div class="row " *ngIf="!click">
+    <!--<div class="card-columns">-->
+    <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads" >
+
+      <div *ngIf="ad.payload.doc.data().Uid==uid">
+
+      <img src="{{ad.payload.doc.data().img_url}}" class="card-img-top" alt="img">
+      <div class="card-body">
+        <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+        <p class="card-text">{{ad.payload.doc.data().description}}
+        {{ad.payload.doc.id}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+        <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+        <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+        <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
+      </ul>
+      <div class="card-body">
+        <button  class="btn btn-danger" (click)="deleteMyAd(ad.payload.doc.id)">delect ad</button>
+        <!--<a href="#" class="card-link">Another link</a>-->
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+

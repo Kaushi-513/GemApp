@@ -1,0 +1,48 @@
+<!--<div id="siginupclose">-->
+
+<body class="front_body" style="padding-top: 100px;">
+  <div class="topright">
+    <img class="img1" height="150" width="150" src="assets/images/logo.jpg" alt="User Icon" />
+
+  </div>
+  <div id="Containersingup" *ngIf="!currentUser">
+   
+    <!-- <h2 class="mb-3 mt-2 w-100 text-center">Register</h2> -->
+    <form [formGroup]="regForm" name="form">
+        <div class ="login-page">
+            <div class="form">
+                <div class="picback">
+                    <img height="90px" width = "90px" src="assets/img/signUp.png" id="icon" alt="User Icon" />
+                    </div>
+
+      <div class="field1">
+        <!-- <label for="email">Email address:</label> -->
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+      </div>
+
+      <div class="field2">
+        <!-- <label for="username">Username:</label> -->
+        <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username">
+      </div>
+
+      <div class="field3">
+        <!-- <label for="password">Password:</label> -->
+        <input type="password" formControlName="password" class="form-control" id="password" placeholder="password">
+      </div>
+
+      <div class="field4">
+        <!-- <label for="passwordConf">Confirm password:</label> -->
+        <input type="password" formControlName="passwordConf" class="form-control" id="passwordConf" placeholder="Confirm password">
+      </div>
+    
+
+      <div class="spinner-border" role="status" *ngIf="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <button class="form_bt submit_bt" type="button" *ngIf="!loading" (click)="onSubmit()">Signup</button>
+    </div>
+  </div>
+  </form>
+  </div>
+</body>
+<!--</div>-->

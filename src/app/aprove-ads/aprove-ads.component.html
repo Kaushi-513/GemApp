@@ -1,0 +1,39 @@
+<div class="aproveads">
+<div class="container">
+<div class="row">
+<!--<div class="card-columns">-->
+<div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads">
+
+<div *ngIf="!ad.payload.doc.data().approved">
+
+  <img src="{{ ad.payload.doc.data().img_url }}" class="card-img-top"
+  style="width:50px; height: 50px;">
+<div class="card-body">
+<h5 class="card-title">title{{ad.payload.doc.data().title}}</h5>
+<p class="card-text">description:-{{ad.payload.doc.data().description}}</p>
+</div>
+<ul class="list-group list-group-flush">
+<!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+<li class="list-group-item">condition{{ad.payload.doc.data().condition}}</li>
+<li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+<li class="list-group-item">ownermail{{ad.payload.doc.data().owneremail}}</li>
+</ul>
+<div class="card-body">
+{{ad.payload.doc.id}}
+  <!--<div *ngIf="aproved">-->
+  <div *ngIf="issendTOAprove" class="">
+    {{aprove}}
+  </div>
+<button  class="card-link btn-dark "  (click)="aprovethis(ad.payload.doc.id)">APROVE THIS</button>
+<!--<a href="#" class="card-link">Another link</a>-->
+  <!--</div>-->
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+</div>

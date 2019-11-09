@@ -1,0 +1,103 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="backcll">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Jewel Smart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="!currentUser" >
+        <a class="nav-link"    routerLink="login">Log In</a>
+      </li>
+      <li class="nav-item" *ngIf="!currentUser" >
+        <a class="nav-link"  routerLink="signup">Signup</a>
+      </li>
+      <li *ngIf="currentUser" class="nav-item">
+        <a class="nav-link " (click)="logout()">Logout</a>
+
+      </li>
+
+      <li *ngIf="role=='user' && currentUser" class="nav-item">
+        <a class="nav-link " routerLink="userhome">User home</a>
+  
+       </li>
+       <li *ngIf="role!='user'&& currentUser" class="nav-item">
+        <a class="nav-link " routerLink="admin">Admin home</a>
+       </li>
+      
+    </ul>
+  </div>
+</nav>
+<div class="row">
+  <div class="loginwin" id="loginin">
+    <app-loginform></app-loginform>
+
+  </div>
+
+  <div class="siginupwin" id="singupup">
+
+    <app-singup></app-singup>
+  </div>
+
+</div>
+</div>
+
+
+<router-outlet></router-outlet>
+
+<div class="backcolor">
+  <div class="container section no-padding footer">
+     <div class="row no-margin justify-content-around">
+        <img src="assets/images/logo.jpg" width="150px" height="150px" />
+      <div class="col-lg-3 col-sm-6 padding-top">
+        <li class="footer-item">
+          <a href="#" class="footer-link">JewelSmart@info.lk</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-link">+94 77 123 123 4</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-link">F-175,Colombo6</a>
+        </li>
+      </div>
+      <div class="col-lg-3 col-sm-6 padding-top">
+        <li class="footer-item">
+          <a href="#" class="footer-menu">Blog</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-menu">FAQ</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-menu">Help and support</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-menu">Facebook</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-menu">Twitter</a>
+        </li>
+      </div>
+      <div class="col-lg-3 col-sm-6 padding-top">
+        <li class="footer-item">
+          <a href="#" class="footer-link">Privacy & Cookies</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-link"> Privacy Settings</a>
+        </li>
+        <li class="footer-item">
+          <a href="#" class="footer-link">Terms of use</a>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
