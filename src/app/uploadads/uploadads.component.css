@@ -30,15 +30,16 @@ input[type="file"] {
 
 
 .main{
-  background-image:url(../../assets/img/main.jpg)
+  background-image:url(../../assets/img/back2-c.jpg)
 }
 
 .out{
-  background-color:lightyellow
+  background-color:brown;
 }
 .align{
-  text-align: center;
-  color:silver;
+  margin-left: 10%;
+  color:darkblue;
+  margin-top: 5%;
 }
 .nav-link1{
   color:white;
@@ -50,11 +51,21 @@ input[type="file"] {
   margin: 100px 0px 0px 350px;
   z-index: 40;
   /*margin-top: 200px;*/
-  width: 600px;
+  width: 800px;
   height: 200px;
   /*margin-left: 150px;*/
   position: fixed;
-  background-color:#B2CFC6;
+  background-color:lightyellow;
   border-radius: 30px;
   text-align: center;
+}
+h5{
+  color:orange;
+  text-shadow: 3px 2px red;
+}
+h6{
+  color:black;
+}
+img{
+  border-radius: 100px;
 }

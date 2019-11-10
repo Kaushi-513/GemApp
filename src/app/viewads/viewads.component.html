@@ -1,12 +1,13 @@
 
 
-<div class="col-lg-12">
+<div class="col-lg-12 xyz">
+  <H3>--view all Ads--</H3>
   <div class="container">
     <div class="row">
       <!--<div class="card-columns">-->
       <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads">
           <div>
-            <img src="{{ ad.payload.doc.data().img_url }}" class="card-img-top" alt="https://console.firebase.google.com/project/gemapp1-39846/storage/gemapp1-39846.appspot.com/files/{{ ad.payload.doc.data().adsImage }}">
+            <img src="{{ ad.payload.doc.data().img_url }}" class="card-img-top" alt="https://console.firebase.google.com/project/gemapp1-39846/storage/gemapp1-39846.appspot.com/files/{{ ad.payload.doc.data().adsImage }}"style="width:200px; height: 150px;">
               <div class="card-body">
                 <h5 class="card-title">title:-{{ad.payload.doc.data().title}}</h5>
                 <p class="card-text">description:-{{ad.payload.doc.data().description}}</p>

@@ -24,8 +24,23 @@
 
       <li *ngIf="role=='user' && currentUser" class="nav-item">
         <a class="nav-link " routerLink="userhome">User home</a>
+      </li>
+
+        <!-- <li class="nav-item dropdown" *ngIf="role=='user' && currentUser">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">User home</a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="userhome/viewads">View ads</a>
+              <a class="dropdown-item" routerLink="userhome/postads">Post add</a>
+              <a class="dropdown-item" routerLink="userhome/profile">Profile</a>
+            </div>
+          </li> -->
+
+
+
+
   
-       </li>
+     
        <li *ngIf="role!='user'&& currentUser" class="nav-item">
         <a class="nav-link " routerLink="admin">Admin home</a>
        </li>

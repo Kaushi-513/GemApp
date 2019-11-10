@@ -6,14 +6,12 @@
   <button class="btn-primary" (click)="closeAleart()">close</button>
 
 </div>
-<div class="out">
-  <div class="main">
-    <h3 class="align"><b>Add post</b></h3>
-
-
-    <div class="container" style="width:40%; background-color: rgba(167, 159, 119, 0.61);opacity:0.6; border: thistle solid 5px">
+<div class="main">
+  <div class="">
+    <div class="container" style="width:40%; background-color:brown;opacity:0.6; border: thistle solid 5px">
       <div class="picMargin">
         <div style="position: relative; left: 0; top: 0;">
+            <h3 class="align"><b>Post Ads</b></h3>
 
           <img src="assets/img/download.jpg" width="200px" height="200px" class="img1 my-5" />
           <label><img src="assets/img/cam2.png" width="50px" height="50px" class="img2" />
@@ -27,8 +25,8 @@
         
         <div class="form-group">
           <label ><h5>1) Condition</h5></label>
-          <div><input type="radio"   value="used" name="condition" [(ngModel)]="postDetails.condition" class="mx-5">Used
-            <input type="radio"    value="New" name="condition" [(ngModel)]="postDetails.condition" class="mx-5">New</div>
+          <div><h6><input type="radio"   value="used" name="condition" [(ngModel)]="postDetails.condition" class="mx-5">Used
+            <input type="radio"    value="New" name="condition" [(ngModel)]="postDetails.condition" class="mx-5">New</h6></div>
         </div>
         <div class="form-group">
           <label ><h5>2) Title</h5></label>
