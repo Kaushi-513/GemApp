@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
           <label ><h5>Change Contact email</h5></label>
-          <input type="email" class="form-control"  placeholder={{email}}   name="email"  [(ngModel)]="updateDetails.email">
+          <input type="email" class="form-control"   placeholder="{{email}}"  name="email"  [(ngModel)]="updateDetails.email">
         </div>
 
         <button type="submit" class="btn btn-primary my-5">Update</button>
@@ -55,8 +55,8 @@
 
     </div>
   
-
-  <div class="row " *ngIf="!click">
+<div  *ngIf="!click">
+  <div class="row ">
     <!--<div class="card-columns">-->
     <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads" >
 
@@ -81,6 +81,66 @@
       </div>
     </div>
   </div>
+
+
+
+  <br><br>
+  <b>Reserved projects</b>
+  <br><br>
+
+
+  <div class="row">
+    <!--<div class="card-columns">-->
+    <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of myRes">
+      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
+      <div class="card-body">
+        <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+        <p class="card-text">{{ad.payload.doc.data().description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+        <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+        <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+        <li class="list-group-item">{{ad.payload.doc.data().reservedBy}}</li>
+        <button (click)="viewRec(ad.payload.doc.data().reservedBy)">View client</button>
+      </ul>
+      <div class="card-body">
+        <!--<a href="#" class="card-link">Another link</a>-->
+      </div>
+    </div>
+
+  </div>
+
+
+  <br><br>
+  <b>Reserved by me projects</b>
+  <br><br>
+
+
+  <div class="row">
+    <!--<div class="card-columns">-->
+    <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of reserve">
+      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
+      <div class="card-body">
+        <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+        <p class="card-text">{{ad.payload.doc.data().description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+        <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+        <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+        <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
+      </ul>
+      <div class="card-body">
+        <!--<a href="#" class="card-link">Another link</a>-->
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+
 </div>
   
 

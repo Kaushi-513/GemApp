@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   data: any;
   updateDetails: any = {};
   click: boolean;
+  reserve: any;
+  myRes: any;
   constructor(private  adsinfo: AdsService, private upprofile: AuthService) { }
   profileinfomation: any;
   profile: any;
@@ -24,8 +26,11 @@ export class ProfileComponent implements OnInit {
     this.uid = this.profile.user.uid;
 
     this.myadsList(this.profile.user.uid);
+    this.reservedAds();
+    this.getMyReserved();
     this.getprofileinfo();
-    // this.email = this.profile.user.email;
+    this.email = this.profile.user.email;
+    this.updateDetails.email = this.profile.user.email
 
   }
 
@@ -79,5 +84,33 @@ closePro() {
   this.click = false;
   document.getElementById('update').style.display = 'none';
 }
+
+
+reservedAds(){
+  this.adsinfo.GetReservedAds().subscribe(
+    result=>{
+
+      this.reserve = result
+      // console.log(result.map(
+      //     da => {
+      //       console.log(da.payload.doc.data());
+      //     }
+      // )
+      // )
+    }
+  )
+}
+
+getMyReserved(){
+
+  this.adsinfo.GetMyReservedAds().subscribe(
+
+    result=>{
+
+      this.myRes= result
+    }
+  )
+}
+
 
 }

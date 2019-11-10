@@ -19,7 +19,7 @@ export class AproveADSComponent implements OnInit {
     this.adsList();
   }
   adsList() {
-    this.adsservices.ViewAds().subscribe(data => {
+    this.adsservices.AdminViewAds().subscribe(data => {
       this.ads = data;
     });
   }

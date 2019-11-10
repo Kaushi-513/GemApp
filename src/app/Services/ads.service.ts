@@ -21,7 +21,6 @@ export class AdsService {
         price: value.price,
         adsImage: AdsImage,
         img_url:url,
-        reserved: false,
         approved: false
 
       }).then(res => {
@@ -48,13 +47,27 @@ export class AdsService {
 
   ViewaprovedAds() {
     // console.log("Document run");
-    return this.db.collection('AproveAds').snapshotChanges();
+    return this.db.collection('AproveAds').
+    snapshotChanges();
+
+
+  }
+
+
+  AdminViewAds() {
+    // console.log("Document run");
+    return this.db.collection('UserSendAds',ref => ref
+    .where('approved', '==', false)).
+    snapshotChanges();
 
 
   }
 
   viewByOwner(uid) {
-    return this.db.collection('UserSendAds').snapshotChanges();
+
+    return this.db.collection('UserSendAds',ref => ref
+    .where('Uid', '==', uid)).
+    snapshotChanges();
   }
 
   deleteByOwner(id) {
@@ -108,6 +121,7 @@ export class AdsService {
 
       this.db.collection('AproveAds').add({
         adsId: id,
+        Uid: value.Uid,
         condition: value.condition,
         title: value.title,
         description: value.description,
@@ -119,6 +133,27 @@ export class AdsService {
         resolve(res);
       }, err => reject(err));
     });
+  }
+
+
+  GetReservedAds(){
+
+    const curr = JSON.parse(localStorage.getItem('currentUser'))
+
+    return this.db.collection("AproveAds",ref => ref.where('reserved', '==', true)
+    .where('reservedBy', '==', curr.user.uid))
+    .snapshotChanges()
+    
+  }
+
+
+  GetMyReservedAds(){
+    const curr = JSON.parse(localStorage.getItem('currentUser'))
+
+    return this.db.collection("AproveAds",ref => ref.where('reserved', '==', true)
+    .where('Uid', '==', curr.user.uid))
+    .snapshotChanges()
+    
   }
 
 
