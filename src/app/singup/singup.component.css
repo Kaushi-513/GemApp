@@ -164,7 +164,7 @@
   background-image: url("/assets/img/back2-c.jpg");
   background-color: #cccccc;
   background-position: center;
-  height:900px;
+  height:800px;
   background-size: cover;
   background-repeat:no-repeat;
 
@@ -190,9 +190,12 @@
 .form {
   position: relative;
   z-index: 1;
-  background-color:brown;opacity:0.6;
+  /* background-color:brown;opacity:0.6; */
+  background-image:  url("/assets/img/back5.jpg");
+  background-repeat:no-repeat;
+  background-size: cover;
   max-width: 600px;
-  margin: 0 auto 100px;
+  margin: 0 auto 80px;
   padding: 75px;
   text-align: center;
   box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -265,7 +268,7 @@ margin-right: auto;
 }
 .topright {
 position: absolute;
-top: 80px;
+top: 70px;
 right: 16px;
 
 

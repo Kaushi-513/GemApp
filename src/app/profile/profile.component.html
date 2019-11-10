@@ -1,6 +1,7 @@
 <body class="main">
 <h3>Name : {{email}}</h3>
-<h3>Your ID : {{uid}}</h3>
+<!-- <h3>Your ID : {{uid}}</h3> -->
+<h3>First Name : {{firstname}}</h3>
 <div class="spa2"></div>
 <div class="container">
 
@@ -66,7 +67,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
         <p class="card-text">{{ad.payload.doc.data().description}}
-        {{ad.payload.doc.id}}</p>
+        <!-- {{ad.payload.doc.id}}</p> -->
       </div>
       <ul class="list-group list-group-flush">
         <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
@@ -85,14 +86,14 @@
 
 
   <br><br>
-  <b>Reserved projects</b>
+  <b>Reserved products</b>
   <br><br>
 
 
   <div class="row">
     <!--<div class="card-columns">-->
     <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of myRes">
-      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
+      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img."style="width:200px; height: 150px;">
       <div class="card-body">
         <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
         <p class="card-text">{{ad.payload.doc.data().description}}</p>
@@ -101,7 +102,7 @@
         <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
         <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
         <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
-        <li class="list-group-item">{{ad.payload.doc.data().reservedBy}}</li>
+        <!-- <li class="list-group-item">{{ad.payload.doc.data().reservedBy}}</li> -->
         <button (click)="viewRec(ad.payload.doc.data().reservedBy)">View client</button>
       </ul>
       <div class="card-body">
@@ -113,14 +114,14 @@
 
 
   <br><br>
-  <b>Reserved by me projects</b>
+  <b>Reserved by me products</b>
   <br><br>
 
 
   <div class="row">
     <!--<div class="card-columns">-->
     <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of reserve">
-      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
+      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img." style="width:200px; height: 150px;">
       <div class="card-body">
         <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
         <p class="card-text">{{ad.payload.doc.data().description}}</p>
