@@ -7,6 +7,7 @@ import { AuthService } from '../AuthService/auth.service';
   providedIn: 'root'
 })
 export class AdsService {
+  ad: any;
 
   constructor(public db: AngularFirestore, private http: HttpClient, private auth: AuthService) { }
 
@@ -71,13 +72,15 @@ export class AdsService {
   }
 
   deleteByOwner(id) {
-    return this.db.collection('UserSendAds').doc(id).delete().then(
-      data => {
-        console.log('ads has been deleted');
-      }, err => {
-        console.log('ads hasnt been deleted' + err);
-      }
-    );
+          
+         return this.db.collection('UserSendAds').doc(id).delete().then(
+            data => {
+              console.log('ads has been deleted');
+            }, err => {
+              console.log('ads hasnt been deleted' + err);
+            }
+          );
+    
   }
 
 
@@ -154,6 +157,35 @@ export class AdsService {
     .where('Uid', '==', curr.user.uid))
     .snapshotChanges()
     
+  }
+
+  editAd(id){
+
+    return this.db.collection('UserSendAds').doc(id).snapshotChanges()
+
+  }
+
+
+  userUpdateAds(value,id,image_name,url){
+    
+    return this.db.collection("UserSendAds").doc(id).set({
+      condition: value.condition,
+      title: value.title,
+      description: value.description,
+      price: value.price,
+      adsImage: image_name,
+      img_url: url,
+      Uid: value.Uid,
+      approved: value.approved,
+      owneremail: value.owneremail
+
+    })
+  }
+
+
+  getClient(cli_id){
+
+    return this.db.collection('user').doc(cli_id).snapshotChanges()
   }
 
 
