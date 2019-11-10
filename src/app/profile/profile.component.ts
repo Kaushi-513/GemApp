@@ -23,17 +23,17 @@ export class ProfileComponent implements OnInit {
     console.log(this.profile.user.uid);
     this.uid = this.profile.user.uid;
 
-    this.myadsList();
+    this.myadsList(this.profile.user.uid);
     this.getprofileinfo();
     // this.email = this.profile.user.email;
 
   }
 
 
-    myadsList() {
+    myadsList(Uid) {
 
     // console.log(this.adsinfo=this.lo.authority)
-    this.adsinfo.viewByOwner().subscribe(data => {
+    this.adsinfo.viewByOwner(Uid).subscribe(data => {
       // this.article=art;
       this.ads = data;
       // console.log(data.map(

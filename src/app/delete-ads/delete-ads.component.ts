@@ -23,6 +23,7 @@ export class DeleteAdsComponent implements OnInit {
     // console.log(this.adsinfo=this.lo.authority)
     this.adsinfo.ViewaprovedAds().subscribe(data => {
       // this.article=art;
+      
       this.ads = data;
       // console.log(data.map(
       //   da => {
@@ -36,8 +37,8 @@ export class DeleteAdsComponent implements OnInit {
 
 
 
-  deleteAd(value) {
-    this.adsinfo.deleteByAdmin(value);
+  deleteAd(value,adsID) {
+    this.adsinfo.deleteByAdmin(value,adsID);
 
   }
 }

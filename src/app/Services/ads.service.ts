@@ -53,7 +53,7 @@ export class AdsService {
 
   }
 
-  viewByOwner() {
+  viewByOwner(uid) {
     return this.db.collection('UserSendAds').snapshotChanges();
   }
 
@@ -68,10 +68,14 @@ export class AdsService {
   }
 
 
-  deleteByAdmin(id) {
+  deleteByAdmin(id,adsID) {
+
+    console.log(adsID)
 
     return this.db.collection('AproveAds').doc(id).delete().then(
       data => {
+
+        this.db.collection("UserSendAds").doc(adsID).set({ approved: false }, { merge: true });
         console.log('ads has been deleted');
       }, err => {
         console.log('ads hasnt been deleted' + err);
@@ -103,7 +107,7 @@ export class AdsService {
 
 
       this.db.collection('AproveAds').add({
-
+        adsId: id,
         condition: value.condition,
         title: value.title,
         description: value.description,
