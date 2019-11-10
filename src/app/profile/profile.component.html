@@ -1,47 +1,61 @@
 <body class="main">
-<h3>Name : {{email}}</h3>
-<h3>Your ID : {{uid}}</h3>
-<div class="spa2"></div>
-<div class="container">
+  <h3>Name : {{email}}</h3>
+  <h3>Your ID : {{uid}}</h3>
+  <div class="spa2"></div>
+  <div class="container">
 
-  
+
     <div class="row userpanel">
-    <div class="col-lg-4 adview" >
-        <button class="btn btn-dark"  *ngIf="!click" (click)="openPro()">Edit Profile</button>
-       </div>
+      <div class="col-lg-4 adview">
+        <button class="btn btn-dark" *ngIf="!click" (click)="openPro()">Edit Profile</button>
+      </div>
 
-    <div><button class="btn-dark" *ngIf="click" (click)="closePro()">close profile</button> </div>
-  </div>
-    <div class="profile" id="update"  *ngIf="click" >
-      
+      <div><button class="btn-dark" *ngIf="click" (click)="closePro()">close profile</button> </div>
+    </div>
+    <div class="profile" id="update" *ngIf="click">
 
 
-      <form (ngSubmit)="f.form.valid &&updateProfile()"#f="ngForm" novalidate >
+
+      <form (ngSubmit)="f.form.valid &&updateProfile()" #f="ngForm" novalidate>
 
         <div class="form-group">
-          <label ><h5>Gender</h5></label>
-          <div><input type="radio"   value="male" name="condition" [(ngModel)]="updateDetails.gender" class="mx-5">male
-            <input type="radio"    value="female" name="condition" [(ngModel)]="updateDetails.gender" class="mx-5">female</div>
+          <label>
+            <h5>Gender</h5>
+          </label>
+          <div><input type="radio" value="male" name="condition" [(ngModel)]="updateDetails.gender" class="mx-5">male
+            <input type="radio" value="female" name="condition" [(ngModel)]="updateDetails.gender" class="mx-5">female
+          </div>
         </div>
 
 
 
         <div class="form-group">
-          <label ><h5>firstname</h5></label>
-          <input type="text" class="form-control"  placeholder="firstname" name="title" [(ngModel)]="updateDetails.firstname">
+          <label>
+            <h5>firstname</h5>
+          </label>
+          <input type="text" class="form-control" placeholder="firstname" name="title"
+            [(ngModel)]="updateDetails.firstname">
         </div>
 
         <div class="form-group">
-          <label ><h5>lastname</h5></label>
-          <input type="text" class="form-control"  placeholder="lastname" name="title" [(ngModel)]="updateDetails.lastname">
+          <label>
+            <h5>lastname</h5>
+          </label>
+          <input type="text" class="form-control" placeholder="lastname" name="title"
+            [(ngModel)]="updateDetails.lastname">
         </div>
         <div class="form-group">
-          <label ><h5>DateOfBirday</h5></label>
-          <input type="date" class="form-control"  placeholder="Title" name="title" [(ngModel)]="updateDetails.dob">
+          <label>
+            <h5>DateOfBirday</h5>
+          </label>
+          <input type="date" class="form-control" placeholder="Title" name="title" [(ngModel)]="updateDetails.dob">
         </div>
         <div class="form-group">
-          <label ><h5>Change Contact email</h5></label>
-          <input type="email" class="form-control"   placeholder="{{email}}"  name="email"  [(ngModel)]="updateDetails.email">
+          <label>
+            <h5>Change Contact email</h5>
+          </label>
+          <input type="email" class="form-control" placeholder="{{email}}" name="email"
+            [(ngModel)]="updateDetails.email">
         </div>
 
         <button type="submit" class="btn btn-primary my-5">Update</button>
@@ -54,94 +68,176 @@
 
 
     </div>
-  
-<div  *ngIf="!click">
-  <div class="row ">
-    <!--<div class="card-columns">-->
-    <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads" >
 
-      <div *ngIf="ad.payload.doc.data().Uid==uid">
+    <div *ngIf="!click">
+      <div class="row ">
+        <!--<div class="card-columns">-->
+        <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of ads">
 
-      <img src="{{ad.payload.doc.data().img_url}}" class="card-img-top" alt="img"style="width:200px; height: 150px;">
-      <div class="card-body">
-        <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
-        <p class="card-text">{{ad.payload.doc.data().description}}
-        {{ad.payload.doc.id}}</p>
+          <div *ngIf="ad.payload.doc.data().Uid==uid">
+
+            <img src="{{ad.payload.doc.data().img_url}}" class="card-img-top" alt="img"
+              style="width:200px; height: 150px;">
+            <div class="card-body">
+              <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+              <p class="card-text">{{ad.payload.doc.data().description}}
+                {{ad.payload.doc.id}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+              <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+              <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+              <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
+            </ul>
+            <div class="card-body">
+              <button class="btn btn-danger" (click)="deleteMyAd(ad.payload.doc.id)">delect ad</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"
+                (click)="editMyAd(ad.payload.doc.id)">edit ad</button>
+              <!--<a href="#" class="card-link">Another link</a>-->
+            </div>
+          </div>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
-        <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
-        <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
-        <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
-      </ul>
-      <div class="card-body">
-        <button  class="btn btn-danger" (click)="deleteMyAd(ad.payload.doc.id)">delect ad</button>
-        <!--<a href="#" class="card-link">Another link</a>-->
+
+
+
+      <br><br>
+      <b>Reserved projects</b>
+      <br><br>
+
+
+      <div class="row">
+        <!--<div class="card-columns">-->
+        <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of myRes">
+          <img src="{{ad.payload.doc.data().img_url}}" class="card-img-top" alt="img.">
+          <div class="card-body">
+            <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+            <p class="card-text">{{ad.payload.doc.data().description}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+            <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+            <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+            <li class="list-group-item">{{ad.payload.doc.data().reservedBy}}</li>
+            <button (click)="viewRec(ad.payload.doc.data().reservedBy)" data-toggle="modal" data-target="#exampleModalLong1">View client</button>
+          </ul>
+          <div class="card-body">
+            <!--<a href="#" class="card-link">Another link</a>-->
+          </div>
+        </div>
+
       </div>
+
+
+      <br><br>
+      <b>Reserved by me projects</b>
+      <br><br>
+
+
+      <div class="row">
+        <!--<div class="card-columns">-->
+        <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of reserve">
+          <img src="{{ad.payload.doc.data().img_url}}" class="card-img-top" alt="img.">
+          <div class="card-body">
+            <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
+            <p class="card-text">{{ad.payload.doc.data().description}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
+            <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
+            <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
+            <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
+          </ul>
+          <div class="card-body">
+            <!--<a href="#" class="card-link">Another link</a>-->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+
+            <div style=" background-color:brown;opacity:0.6; border: thistle solid 5px">
+              <div class="picMargin">
+                <div style="position: relative; left: 0; top: 0;">
+                  <h3 class="align"><b>Post Ads</b></h3>
+
+                  <img src="{{img_url}}" width="200px" height="200px" class="img1 my-5" />
+                  <label><img src="assets/img/cam2.png" width="50px" height="50px" class="img2" />
+                    <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+
+                  </label>
+                </div>
+              </div>
+
+              <form (ngSubmit)="f.form.valid &&onsubmit()" #f="ngForm" novalidate>
+
+                <div class="form-group">
+                  <label>
+                    <h5>1) Condition</h5>
+                  </label>
+                  <div>
+                    <h6><input type="radio" value="used" name="condition" [(ngModel)]="postDetails.condition"
+                        class="mx-5">Used
+                      <input type="radio" value="New" name="condition" [(ngModel)]="postDetails.condition"
+                        class="mx-5">New</h6>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <h5>2) Title</h5>
+                  </label>
+                  <input type="text" class="form-control" placeholder="Title" name="title"
+                    [(ngModel)]="postDetails.title">
+                </div>
+                <div class="form-group">
+                  <label>
+                    <h5>3) Description</h5>
+                  </label>
+                  <input type="textarea" class="form-control" placeholder="Add a description here" name="description"
+                    [(ngModel)]="postDetails.description">
+                </div>
+                <div class="form-group">
+                  <label>
+                    <h5>4) Price</h5>
+                  </label>
+                  <input type="text" class="form-control" placeholder="Rs.18000" name="price"
+                    [(ngModel)]="postDetails.price">
+                </div>
+
+                <button type="submit" class="btn btn-primary my-5">Update the ad</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
 
 
-  <br><br>
-  <b>Reserved projects</b>
-  <br><br>
 
+            <div class="modal fade" id="exampleModalLong1" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    email : {{ client.email }}<br>
+                    First name : {{ client.firstname }}<br>
+                    Last name : {{ client.lastname }}<br>
+                </div>
+                </div>
+              </div>
+            </div>
 
-  <div class="row">
-    <!--<div class="card-columns">-->
-    <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of myRes">
-      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
-      <div class="card-body">
-        <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
-        <p class="card-text">{{ad.payload.doc.data().description}}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
-        <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
-        <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
-        <li class="list-group-item">{{ad.payload.doc.data().reservedBy}}</li>
-        <button (click)="viewRec(ad.payload.doc.data().reservedBy)">View client</button>
-      </ul>
-      <div class="card-body">
-        <!--<a href="#" class="card-link">Another link</a>-->
-      </div>
-    </div>
 
   </div>
 
-
-  <br><br>
-  <b>Reserved by me projects</b>
-  <br><br>
-
-
-  <div class="row">
-    <!--<div class="card-columns">-->
-    <div class="card col-lg-3" style="width: 18rem;" *ngFor="let ad of reserve">
-      <img src="{{ad.payload.doc.data().img_url}}"  class="card-img-top" alt="img.">
-      <div class="card-body">
-        <h5 class="card-title">{{ad.payload.doc.data().title}}</h5>
-        <p class="card-text">{{ad.payload.doc.data().description}}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <!--<li class="list-group-item">{{ad.payload.doc.data().name}}</li>-->
-        <li class="list-group-item">{{ad.payload.doc.data().condition}}</li>
-        <li class="list-group-item">Rs{{ad.payload.doc.data().price}}</li>
-        <li class="list-group-item">{{ad.payload.doc.data().owneremail}}</li>
-      </ul>
-      <div class="card-body">
-        <!--<a href="#" class="card-link">Another link</a>-->
-      </div>
-    </div>
-
-  </div>
-
-  </div>
-
-
-</div>
 </body>
-  
-

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AdsService} from '../Services/ads.service';
 import {AuthService} from '../AuthService/auth.service';
+import * as uuid from 'uuid'
+import { AngularFireStorage } from 'angularfire2/storage';
+import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +20,28 @@ export class ProfileComponent implements OnInit {
   click: boolean;
   reserve: any;
   myRes: any;
-  constructor(private  adsinfo: AdsService, private upprofile: AuthService) { }
+
+  postDetails: any = {
+    condition:'',
+    title:'',
+    description:'',
+    price: 0
+  };
+  sendsucces: boolean = false;
+  img_url: any;
+  id: any;
+
+  AdsImage: File;
+  image_name: string;
+  myId = uuid.v4();
+  client={
+    email:'',
+    firstname:'',
+    lastname:'',
+  };
+
+  constructor(private  adsinfo: AdsService, private upprofile: AuthService,
+    private adsservice: AdsService,private afStorage: AngularFireStorage) { }
   profileinfomation: any;
   profile: any;
   ngOnInit() {
@@ -111,6 +135,73 @@ getMyReserved(){
     }
   )
 }
+
+
+viewRec(cli_id){
+
+    this.adsinfo.getClient(cli_id).subscribe(
+      result=>{
+        this.client.email = result.payload.get('email')
+        this.client.firstname = result.payload.get('firstname')
+        this.client.lastname = result.payload.get('lastname')
+      }
+    )
+}
+
+
+
+
+
+editMyAd(id){
+  
+  this.adsinfo.editAd(id).subscribe(
+    data=>{
+      this.id = data.payload.id
+       this.postDetails.condition = data.payload.get('condition')
+       this.postDetails.title = data.payload.get('title')
+       this.postDetails.description = data.payload.get('description')
+       this.postDetails.price = data.payload.get('price')
+       this.img_url = data.payload.get('img_url')
+       this.postDetails.Uid = data.payload.get('Uid')
+       this.postDetails.adsImage = data.payload.get('adsImage')
+       this.image_name = data.payload.get('adsImage')
+       this.postDetails.approved = data.payload.get('approved')
+       this.postDetails.owneremail = data.payload.get('owneremail')
+
+    }
+  )
+
+}
+
+
+
+  onFileChanged(event) {
+    this.AdsImage = <File>event.target.files[0]
+    this.image_name = this.myId + this.AdsImage.name
+
+  }
+
+
+onsubmit(value) {
+
+
+  if(this.image_name == this.postDetails.adsImage){
+    this.adsservice.userUpdateAds(this.postDetails,this.id, this.postDetails.adsImage, this.img_url)
+  }else{
+    this.afStorage.upload('/' + this.image_name, this.AdsImage).then(
+      data=>{
+        const storageRef = firebase.storage().ref().child('/'+this.image_name)
+
+        storageRef.getDownloadURL().then(url => {
+          console.log(this.id)
+          this.adsservice.userUpdateAds(this.postDetails,this.id, this.image_name, url)
+      }
+    )
+      })
+    }
+
+  }
+
 
 
 }

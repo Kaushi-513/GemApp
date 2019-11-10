@@ -4,3 +4,76 @@
 .main{
   background-image:url(../../assets/img/back2-c.jpg)
 }
+
+
+input[type="file"] {
+  display: none;
+}
+
+.img1
+{
+  position: relative;
+  top: 0;
+  left: 0;
+
+
+}
+.img2
+{
+  position: absolute;
+  top: 70%;
+  left: 40%;
+  border-radius:100%;
+}
+.picMargin{
+  margin-left: 35%;
+}
+
+
+
+
+.side{
+  font-size: 20px
+}
+
+
+.main{
+  background-image:url(../../assets/img/back2-c.jpg)
+}
+
+.out{
+  background-color:brown;
+}
+.align{
+  margin-left: 10%;
+  color:darkblue;
+  margin-top: 5%;
+}
+.nav-link1{
+  color:white;
+  margin: 0px 20px
+}
+.message{
+  font-family: Chiller;
+  font-size: 40px;
+  margin: 100px 0px 0px 350px;
+  z-index: 40;
+  /*margin-top: 200px;*/
+  width: 800px;
+  height: 200px;
+  /*margin-left: 150px;*/
+  position: fixed;
+  background-color:lightyellow;
+  border-radius: 30px;
+  text-align: center;
+}
+h5{
+  color:orange;
+  text-shadow: 3px 2px red;
+}
+h6{
+  color:black;
+}
+img{
+  border-radius: 100px;
+}
