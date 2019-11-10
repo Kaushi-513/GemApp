@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
 
   uid: any;
   email: any;
+  firstname:any;
+  lastname:any;
   ads: Array<any>;
   data: any;
   updateDetails: any = {};
@@ -46,7 +48,7 @@ export class ProfileComponent implements OnInit {
   profile: any;
   ngOnInit() {
     this.profile = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.profile.user.uid);
+    console.log(this.profile);
     this.uid = this.profile.user.uid;
 
     this.myadsList(this.profile.user.uid);
